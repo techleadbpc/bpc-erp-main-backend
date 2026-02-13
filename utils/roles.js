@@ -1,0 +1,9 @@
+// roles.js
+module.exports = {
+  ADMIN: 1,
+  MECHANICAL_HEAD: 2,
+  MECHANICAL_MANAGER: 3,
+  SITE_INCHARGE: 4,
+  STORE_MANAGER: 5,
+  PROJECT_MANAGER: 6,
+};
