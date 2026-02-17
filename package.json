@@ -6,8 +6,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node main.js",
+    "build": "webpack --config webpack.prod.js --mode production",
     "dev": "cross-env NODE_ENV=dev nodemon app.js",
-    "build": "npm install && webpack --config webpack.prod.js --mode production",
     "prod": "cross-env NODE_ENV=prod nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
