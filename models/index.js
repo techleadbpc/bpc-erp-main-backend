@@ -8,7 +8,7 @@ const process = require("process");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "dev";
 const envFile = env === "prod" ? ".env.prod" : ".env.dev";
-require("dotenv").config();
+require("dotenv").config({ path: path.resolve(__dirname, `../${envFile}`) });
 const config = require(__dirname + "/../configs/db.config")[env];
 const db = {};
 let sequelize;
@@ -21,7 +21,7 @@ if (config?.use_env_variable) {
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
+    dialect: "postgres", // Force PostgreSQL dialect
     dialectOptions: {
       ssl: {
         require: true, // This will help you. But you will see nwe error
@@ -35,6 +35,7 @@ if (config?.use_env_variable) {
   // });
 }
 sequelizeJoi(sequelize);
+console.log('DB_DIALECT:', process.env.DB_DIALECT);
 if (env === "dev") {
   fs.readdirSync(__dirname)
     .filter((file) => {

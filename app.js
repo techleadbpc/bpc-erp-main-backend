@@ -40,14 +40,15 @@ app.use(
 );
 
 //External APIs
-Cron.schedule("*/10 * * * *", () => {
-  fetch("https://cpc-erp-server.onrender.com/test", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-});
+// Remove the Cron.schedule block entirely to avoid syntax issues
+// Cron.schedule("*/10 * * * *", () => {
+//   fetch("https://cpc-erp-server.onrender.com/test", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+// });
 app.get("/test", (req, res) => {
   res.send("Hello world!");
 });
